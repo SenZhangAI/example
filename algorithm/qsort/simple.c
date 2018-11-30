@@ -16,21 +16,25 @@ void swap(int v[], int i, int j) {
 }
 
 // this version is not quick, but simple
-void qsort(int v[], int left, int right) {
+//
+// v[begin, end)
+// @param begin: first element of a list
+// @param end: next to the last element of a list
+void qsort(int v[], int begin, int end) {
     int i, last;
-    if (left >= right)
+    if (begin >= end - 1)
         return;
 
-    swap(v, left, (left + right) / 2);
-    last = left;
-    for (i = left + 1; i <= right; i++) {
-        if (v[i] < v[left])
+    swap(v, begin, (begin + end) / 2);
+    last = begin;
+    for (i = begin + 1; i < end; i++) {
+        if (v[i] < v[begin])
             swap(v, ++last, i);
     }
-    swap(v, left, last);
+    swap(v, begin, last);
 
-    qsort(v, left, last - 1);
-    qsort(v, last + 1, right);
+    qsort(v, begin, last);
+    qsort(v, last + 1, end);
 }
 
 #define LENGTH(list) ((sizeof(list)) / (sizeof(list[0])))
@@ -41,7 +45,7 @@ int main(int argc, char* argv[]) {
 
     print_list(data, len);
 
-    qsort(data, 0, len -1);
+    qsort(data, 0, len);
 
     print_list(data, len);
     return 0;
