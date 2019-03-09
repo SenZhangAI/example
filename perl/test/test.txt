@@ -1,0 +1,9 @@
+this file is used by script for testing.
+
+START
+    This is Text between START and END.
+    Try to get it in perl.
+    Have fun!
+END
+
+This is Text Outside START and END
