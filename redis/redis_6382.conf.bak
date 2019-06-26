@@ -1,0 +1,17 @@
+slaveof 192.168.56.101 6380
+port 6382
+daemonize yes
+logfile "6382.log"
+# dbfilename "dump-6382.rdb"
+dir "/var/log/redis"
+
+requirepass foobared
+masterauth foobared
+protected-mode no
+
+
+# save 900 1
+# save 300 10
+# save 60 10000
+#bind 0.0.0.0
+bind  192.168.56.101 127.0.0.1
