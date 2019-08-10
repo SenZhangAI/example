@@ -5,15 +5,15 @@ data B = B !Int !Int
 
 instance Sem.Semigroup B where
   (B a b) <> (B c d)
-    | b <= c = B (a + c - b) d
-    | otherwise = B a (d + b - c)
+    | a > d = B (a + c - d) b -- 如果左括号累计值多与右括号，左括号共a+c,抵消右括号a+c-d
+    | otherwise = B c (d + b - a)
 
 instance Monoid B where
   mempty = B 0 0
 
 parse :: Char -> B
-parse '(' = B 0 1
-parse ')' = B 1 0
+parse '(' = B 1 0 -- 将第一个参数作为累计左括号
+parse ')' = B 0 1 -- 将第二个参数作为累计右括号
 parse _   = B 0 0
 
 
