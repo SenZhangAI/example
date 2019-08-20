@@ -1,5 +1,34 @@
 #!/usr/bin/env bash
 
+# list of bash options
+#    allexport      	off
+#    braceexpand    	on
+#    emacs          	off
+#    errexit        	off
+#    errtrace       	off
+#    functrace      	off
+#    hashall        	on
+#    histexpand     	off
+#    history        	off
+#    ignoreeof      	off
+#    interactive-comments	on
+#    keyword        	off
+#    monitor        	off
+#    noclobber      	off
+#    noexec         	on
+#    noglob         	off
+#    nolog          	off
+#    notify         	off
+#    nounset        	off
+#    onecmd         	off
+#    physical       	off
+#    pipefail       	off
+#    posix          	off
+#    privileged     	off
+#    verbose        	off
+#    vi             	off
+#    xtrace         	off
+
 try_test () {
     _test_cmd_=$@
     read -p "try testing '$_test_cmd_' [y/N]? " ans
